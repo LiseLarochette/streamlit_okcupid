@@ -1,15 +1,15 @@
 import streamlit as st
 import pandas as pd
 from datetime import datetime
+import random
+import numpy as np
 
 st.title('Wild Love') 
-import streamlit as st
-import numpy as np
+
+
 
 st.write("One love")
 
-import streamlit as st
-import random
 
 # Liste des utilisateurs fictifs
 users = [
@@ -26,7 +26,7 @@ users = [
 ]
 
 # Titre de l'application
-st.title("💖 Découvre ton match idéal 💖")
+st.title("💖 Application de Rencontre 💖")
 
 # Description
 st.markdown("""
@@ -49,6 +49,14 @@ if submit_button:
     st.write(f"**Sexe:** {gender}")
     st.write(f"**Taille:** {height} cm")
     st.write(f"**Intérêts:** {interests}")
+    
+    # Bouton pour générer un match idéal après soumission des informations
+    if st.button("💘 Découvrir mon match idéal 💘"):
+        match = random.choice(users)
+        st.success(f"Félicitations ! Vous avez un match parfait avec {match['name']}!")
+        st.image(match["image"], caption=f"{match['name']}, {match['age']} ans", width=200)
+        st.write(f"**{match['name']}**, {match['age']} ans")
+        st.write(f"Intérêts : {match['interests']}")
 
 # Affichage des profils
 st.header("Nos utilisateurs")
@@ -61,27 +69,8 @@ for i, user in enumerate(users):
         st.write(f"**{user['name']}**, {user['age']} ans")
         st.write(f"Intérêts : {user['interests']}")
 
-# Bouton pour générer un match
-st.header("Trouver un match")
-
-if st.button("💘 Trouver mon match parfait 💘"):
-    match = random.choice(users)
-    st.success(f"Félicitations ! Vous avez un match parfait avec {match['name']}!")
-    st.image(match["image"], caption=f"{match['name']}, {match['age']} ans", width=200)
-    st.write(f"**{match['name']}**, {match['age']} ans")
-    st.write(f"Intérêts : {match['interests']}")
-
 # Styles personnalisés
 st.markdown("""
     <style>
         .stButton button {
-            background-color: #ff4b4b;
-            color: white;
-            border-radius: 12px;
-            padding: 10px 20px;
-        }
-        .stSuccess {
-            font-size: 1.2em;
-        }
-    </style>
-""", unsafe_allow_html=True)
+            background-co
