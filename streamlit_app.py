@@ -4,8 +4,8 @@ from datetime import datetime
 import random
 import numpy as np
 
-st.title('Wild Love') 
-
+# Centrer le titre sur la page
+st.markdown("<h1 style='text-align: center; color: #ff4b4b;'>Wild Love</h1>", unsafe_allow_html=True)
 
 
 st.write("One love")
