@@ -59,7 +59,7 @@ if menu == "Accueil":
             st.write(f"Intérêts : {match['interests']}")
 
     # Affichage des profils
-    st.header("Nos utilisateurs")
+    st.header("Votre wild match !")
 
     cols = st.columns(2)
     for i, user in enumerate(users):
