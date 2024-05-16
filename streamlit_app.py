@@ -28,9 +28,6 @@ users = [
     {"name": "Jack", "age": 31, "interests": "Fitness, Jeux vidéo", "image": "jack.png"}
 ]
 
-# Titre de l'application
-st.title("💖 Application de Rencontre 💖")
-
 # Description
 st.markdown("""
 Bienvenue sur notre application de rencontre ! Renseignez vos informations ci-dessous et cliquez sur le bouton pour découvrir votre match parfait.
