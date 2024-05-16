@@ -6,42 +6,52 @@ st.title('Wild Love')
 
 st.write("Découvre ton match idéal")
 
-import turtle
+# Create a button
+if st.button('Show Picture'):
+    # Display an image when the button is clicked
+    st.image('image.jpg', caption='A beautiful picture')
 
-# Initialiser la fenêtre
-window = turtle.Screen()
-window.title("Dessiner un Coeur")
-window.bgcolor("white")
-
-# Créer une instance de turtle
-pen = turtle.Turtle()
-pen.color("red")
-pen.speed(3)
-
-# Définir une fonction pour dessiner un coeur
-def draw_heart():
-    pen.begin_fill()
-
-    # Commencer à dessiner le coeur
-    pen.left(140)
-    pen.forward(180)
-    pen.circle(-90, 200)
-    pen.left(120)
-    pen.circle(-90, 200)
-    pen.forward(180)
-
-    pen.end_fill()
-
-# Appeler la fonction pour dessiner le coeur
-draw_heart()
-
-# Cacher la turtle et terminer
-pen.hideturtle()
-
-# Garder la fenêtre ouverte
-window.mainloop()
+# You can replace 'image.jpg' with the path to your own image file
 
 
+
+
+
+import tkinter as tk
+import random
+
+# Liste des utilisateurs fictifs
+users = [
+    "Alice", "Bob", "Charlie", "Diana", "Eve", 
+    "Frank", "Grace", "Hannah", "Ivy", "Jack"
+]
+
+# Fonction pour générer un match aléatoire
+def generate_match():
+    match = random.choice(users)
+    match_label.config(text=f"Vous avez un match avec {match}!")
+
+# Initialisation de la fenêtre principale
+root = tk.Tk()
+root.title("Application de Rencontre")
+
+# Configuration de la taille de la fenêtre
+root.geometry("400x300")
+
+# Titre de l'application
+title_label = tk.Label(root, text="Bienvenue sur l'application de rencontre", font=("Helvetica", 16))
+title_label.pack(pady=20)
+
+# Bouton pour générer un match
+match_button = tk.Button(root, text="Trouver un match", command=generate_match, font=("Helvetica", 14))
+match_button.pack(pady=20)
+
+# Label pour afficher le match
+match_label = tk.Label(root, text="", font=("Helvetica", 14), fg="green")
+match_label.pack(pady=20)
+
+# Lancer la boucle principale de l'interface
+root.mainloop()
 
 
 
