@@ -6,32 +6,34 @@ st.title('Wild Love')
 
 st.write("Découvre ton match idéal")
 
+# Description
+st.write("""
+Bienvenue sur notre application de rencontre. Cliquez sur le bouton ci-dessous pour découvrir votre match parfait !
+""")
 
-
-
-
-import tkinter as tk
-import random
-
-# Liste des utilisateurs fictifs
-users = [
-    "Alice", "Bob", "Charlie", "Diana", "Eve", 
-    "Frank", "Grace", "Hannah", "Ivy", "Jack"
-]
-
-# Fonction pour générer un match aléatoire
-def generate_match():
+# Bouton pour générer un match
+if st.button("Trouver un match"):
     match = random.choice(users)
-    match_label.config(text=f"Vous avez un match avec {match}!")
+    st.success(f"Félicitations ! Vous avez un match parfait avec {match}!")
 
-# Initialisation de la fenêtre principale
-root = tk.Tk()
-root.title("Application de Rencontre")
+# Afficher les images des utilisateurs (optionnel)
+# Créer un dictionnaire d'images fictives (les images doivent être dans le même répertoire que le script)
+images = {
+    "Alice": "alice.png",
+    "Bob": "bob.png",
+    "Charlie": "charlie.png",
+    "Diana": "diana.png",
+    "Eve": "eve.png",
+    "Frank": "frank.png",
+    "Grace": "grace.png",
+    "Hannah": "hannah.png",
+    "Ivy": "ivy.png",
+    "Jack": "jack.png"
+}
 
-# Configuration de la taille de la fenêtre
-root.geometry("400x300")
-
-# Titre de l'application
+# Afficher les images des utilisateurs (optionnel)
+for user in users:
+    st.image(images.get(user, "default.png"), caption=user, use_column_width=True)
 title_label = tk.Label(root, text="Bienvenue sur l'application de rencontre", font=("Helvetica", 16))
 title_label.pack(pady=20)
 
