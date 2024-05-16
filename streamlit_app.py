@@ -1,19 +1,6 @@
 import streamlit as st
 import random
 
-# Liste des utilisateurs fictifs
-users = [
-    {"name": "Alice", "age": 25, "interests": "Voyages, Musique", "image": "alice.png"},
-    {"name": "Bob", "age": 30, "interests": "Sport, Lecture", "image": "bob.png"},
-    {"name": "Charlie", "age": 28, "interests": "Cuisine, Cinéma", "image": "charlie.png"},
-    {"name": "Diana", "age": 22, "interests": "Art, Danse", "image": "diana.png"},
-    {"name": "Eve", "age": 27, "interests": "Technologie, Randonnée", "image": "eve.png"},
-    {"name": "Frank", "age": 32, "interests": "Photographie, Yoga", "image": "frank.png"},
-    {"name": "Grace", "age": 29, "interests": "Mode, Lecture", "image": "grace.png"},
-    {"name": "Hannah", "age": 24, "interests": "Musique, Peinture", "image": "hannah.png"},
-    {"name": "Ivy", "age": 26, "interests": "Écriture, Voyage", "image": "ivy.png"},
-    {"name": "Jack", "age": 31, "interests": "Fitness, Jeux vidéo", "image": "jack.png"}
-]
 
 # Fonction pour afficher le titre centré
 # Header global
