@@ -1,7 +1,6 @@
 import streamlit as st
 import pandas as pd
 import random
-from sklearn.neighbors import NearestNeighbors
 
 # Liste des utilisateurs fictifs
 users = [
