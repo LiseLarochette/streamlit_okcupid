@@ -8,7 +8,7 @@ import numpy as np
 st.markdown("<h1 style='text-align: center; color: #ff4b4b;'>Wild Love</h1>", unsafe_allow_html=True)
 
 
-st.write("One love")
+st.markdown("<h2 style='text-align: center; color: #ff4b4b;'>One love et bien plus encore</h2>", unsafe_allow_html=True)
 
 
 import streamlit as st
