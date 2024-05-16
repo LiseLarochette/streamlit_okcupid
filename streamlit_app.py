@@ -2,15 +2,16 @@ import streamlit as st
 import pandas as pd
 from datetime import datetime
 
-st.title('Hello Wilders, welcome to my application!')
+st.title('Wild Love')
 
-st.write("I enjoy to discover stremalit possibilities")
+st.write("Découvre ton match idéal")
 
 link = "https://raw.githubusercontent.com/murpi/wilddata/master/quests/cars.csv"
 df_weather = pd.read_csv(link)
 
-# Here we use "magic commands":
-df_weather
+# Create a button
+if st.button('C'est parti !'):
+    st.write('C'est parti !')
 
 #afficher le graphique de la température maximale
 st.line_chart(df_weather['MAX_TEMPERATURE_C'])
