@@ -6,7 +6,7 @@ st.title('Wild Love')
 import streamlit as st
 import numpy as np
 
-st.write("Découvre ton match idéal")
+st.write("One love")
 
 import streamlit as st
 import random
@@ -26,7 +26,7 @@ users = [
 ]
 
 # Titre de l'application
-st.title("💖 Application de Rencontre 💖")
+st.title("💖 Découvre ton match idéal 💖")
 
 # Description
 st.markdown("""
