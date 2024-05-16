@@ -10,7 +10,9 @@ st.markdown("<h1 style='text-align: center; color: #ff4b4b;'>Wild Love</h1>", un
 
 
 st.markdown("<h2 style='text-align: center; color: #ff4b4b;'>💖For one love 💖</h2>", unsafe_allow_html=True)
-
+import streamlit as st
+from streamlit_option_menu import option_menu
+import random
 import streamlit as st
 from streamlit_option_menu import option_menu
 import random
@@ -54,6 +56,9 @@ selected = option_menu(
         "nav-link-selected": {"background-color": "#ff4b4b"},
     }
 )
+
+# Header global
+st.markdown("<h2 style='text-align: center; color: #ff4b4b;'>Bienvenue sur Wild Love</h2>", unsafe_allow_html=True)
 
 # Page d'accueil
 if selected == "Accueil":
