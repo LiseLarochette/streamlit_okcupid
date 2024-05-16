@@ -97,3 +97,60 @@ st.markdown("""
         }
     </style>
 """, unsafe_allow_html=True)
+
+import streamlit as st
+import pandas as pd
+from sklearn.neighbors import NearestNeighbors
+
+# Charger le jeu de données encodé
+final_df_cupid_ml = pd.read_csv('final_df_cupid_ml.csv')
+# Sélectionner les caractéristiques pour le KNN
+features = final_df_cupid_ml.drop(['Name'], axis=1)
+
+# Interface utilisateur avec Streamlit
+st.title('Application de Matchmaking')
+
+# Formulaire pour les informations de l'utilisateur
+name = st.text_input("Nom")
+age = st.slider("Âge", 18, 100, 30)
+gender = st.selectbox("Sexe", ["Homme", "Femme", "Autre"])
+height = st.slider("Taille (cm)", 100, 250, 180)
+interests = st.text_area("Intérêts")
+submit_button = st.button("Trouver un match")
+
+if submit_button:
+    st.write(f"**Nom:** {name}")
+    st.write(f"**Âge:** {age} ans")
+    st.write(f"**Sexe:** {gender}")
+    st.write(f"**Taille:** {height} cm")
+    st.write(f"**Intérêts:** {interests}")
+    
+    # Prétraitement des données d'entrée utilisateur pour le KNN
+    user_input = {
+        'age': age,
+        'status_single': 1,
+        'sex_x_m': 1 if gender == "Homme" else 0,
+        'orientation_straight': 1,
+        'body_type_fit': 1,
+        'diet_anything': 1,
+        'education_bachelors': 1,
+        'height': height,
+        'job_computer / hardware / software': 1,
+        'pets_likes pets': 1,
+        'smokes_no': 1
+    }
+    user_input_encoded = pd.DataFrame(user_input, index=[0])
+    user_input_aligned = user_input_encoded.reindex(columns=features.columns, fill_value=0)
+    
+    # Initialisation et ajustement du modèle KNN
+    knn_model = NearestNeighbors(n_neighbors=1)
+    knn_model.fit(features)
+    
+    # Recherche du plus proche voisin
+    distances, indices = knn_model.kneighbors(user_input_aligned)
+    nearest_neighbor_index = indices[0][0]
+    nearest_neighbor_info = final_df_cupid_ml.iloc[nearest_neighbor_index]
+    
+    # Affichage des informations sur le match le plus proche
+    st.write("Match le plus proche:", nearest_neighbor_info)
+
