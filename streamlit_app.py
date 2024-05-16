@@ -1,24 +1,15 @@
 import streamlit as st
 import pandas as pd
-import random
+from sklearn.neighbors import NearestNeighbors
 
 # Centrer le titre sur la page
 st.markdown("<h1 style='text-align: center; color: #ff4b4b;'>Wild Love</h1>", unsafe_allow_html=True)
 st.markdown("<h2 style='text-align: center; color: #ff4b4b;'>💖For one love 💖</h2>", unsafe_allow_html=True)
 
-# Liste des utilisateurs fictifs
-users = [
-    {"name": "Alice", "age": 25, "interests": "Voyages, Musique", "image": "alice.png"},
-    {"name": "Bob", "age": 30, "interests": "Sport, Lecture", "image": "bob.png"},
-    {"name": "Charlie", "age": 28, "interests": "Cuisine, Cinéma", "image": "charlie.png"},
-    {"name": "Diana", "age": 22, "interests": "Art, Danse", "image": "diana.png"},
-    {"name": "Eve", "age": 27, "interests": "Technologie, Randonnée", "image": "eve.png"},
-    {"name": "Frank", "age": 32, "interests": "Photographie, Yoga", "image": "frank.png"},
-    {"name": "Grace", "age": 29, "interests": "Mode, Lecture", "image": "grace.png"},
-    {"name": "Hannah", "age": 24, "interests": "Musique, Peinture", "image": "hannah.png"},
-    {"name": "Ivy", "age": 26, "interests": "Écriture, Voyage", "image": "ivy.png"},
-    {"name": "Jack", "age": 31, "interests": "Fitness, Jeux vidéo", "image": "jack.png"}
-]
+# Chargement du jeu de données encodé
+final_df_cupid_ml = pd.read_csv('final_df_cupid_ml.csv')
+# Sélection des caractéristiques pour le KNN
+features = final_df_cupid_ml.drop(['Name'], axis=1)
 
 # Fonction pour afficher le titre centré
 def centered_title(text):
@@ -50,17 +41,35 @@ if menu == "Accueil":
         st.write(f"**Taille:** {height} cm")
         st.write(f"**Intérêts:** {interests}")
         
-        # Bouton pour générer un match idéal après soumission des informations
-        if st.button("💘 Découvrir mon match idéal 💘"):
-            match = random.choice(users)
-            st.success(f"Félicitations ! Vous avez un match parfait avec {match['name']}!")
-            st.image(match["image"], caption=f"{match['name']}, {match['age']} ans", width=200)
-            st.write(f"**{match['name']}**, {match['age']} ans")
-            st.write(f"Intérêts : {match['interests']}")
+        # Prétraitement de l'entrée utilisateur pour le KNN
+        user_input = {
+            'age': age,
+            'status_single': 1,  # Make sure to include all status options from your dataset
+            'sex_x_m': 1 if gender == "Homme" else 0,  # Make sure to include all sex options from your dataset
+            'orientation_straight': 1,  # Make sure to include all orientation options from your dataset
+            'body_type_fit': 1,  # Make sure to include all body type options from your dataset
+            'diet_anything': 1,  # Make sure to include all diet options from your dataset
+            'education_bachelors': 1,  # Make sure to include all education options from your dataset
+            'height': height,
+            'job_computer / hardware / software': 1,  # Make sure to include all job options from your dataset
+            'pets_likes pets': 1,  # Make sure to include all pets options from your dataset
+            'smokes_no': 1  # Make sure to include all smokes options from your dataset
+        }
+        user_input_encoded = pd.DataFrame(user_input, index=[0])
+        user_input_aligned = user_input_encoded.reindex(columns=features.columns, fill_value=0)
+        
+        # Initialisation et ajustement du modèle KNN
+        knn_model = NearestNeighbors(n_neighbors=1)
+        knn_model.fit(features)
+        
+        # Recherche du plus proche voisin
+        distances, indices = knn_model.kneighbors(user_input_aligned)
+        nearest_neighbor_index = indices[0][0]
+        nearest_neighbor_info = final_df_cupid_ml.iloc[nearest_neighbor_index]
+        st.write("Informations sur le voisin le plus proche:", nearest_neighbor_info)
 
     # Affichage des profils
     st.header("Nos utilisateurs")
-
     cols = st.columns(2)
     for i, user in enumerate(users):
         col = cols[i % 2]
@@ -76,7 +85,7 @@ elif menu == "Mon Profil":
     # Afficher les informations du profil si elles existent
     if 'name' in locals():
         st.write(f"**Nom:** {name}")
-        st.write(f"** ge:** {age} ans")
+        st.write(f"**Âge:** {age} ans")
         st.write(f"**Sexe:** {gender}")
         st.write(f"**Taille:** {height} cm")
         st.write(f"**Intérêts:** {interests}")
@@ -97,5 +106,3 @@ st.markdown("""
         }
     </style>
 """, unsafe_allow_html=True)
-
-
