@@ -3,6 +3,7 @@ import pandas as pd
 from datetime import datetime
 import random
 import numpy as np
+from streamlit_option_menu import option_menu
 
 # Centrer le titre sur la page
 st.markdown("<h1 style='text-align: center; color: #ff4b4b;'>Wild Love</h1>", unsafe_allow_html=True)
@@ -33,6 +34,29 @@ users = [
 # Fonction pour afficher le titre centré
 def centered_title(text):
     st.markdown(f"<h1 style='text-align: center; color: #ff4b4b;'>{text}</h1>", unsafe_allow_html=True)
+
+# Menu de navigation en haut
+selected = option_menu(
+    menu_title=None,  # Pas de titre pour le menu
+    options=["Accueil", "Mon Profil"],  # Options du menu
+    icons=["house", "person"],  # Icônes pour les options
+    menu_icon="cast",  # Icône du menu
+    default_index=0,  # Option par défaut
+    orientation="horizontal",  # Menu horizontal
+    styles={
+        "container": {"padding": "0!important", "background-color": "#fafafa"},
+        "icon": {"color": "orange", "font-size": "25px"},
+        "nav-link": {
+            "font-size": "16px",
+            "text-align": "center",
+            "margin": "0px",
+            "padding": "10px",
+            "--hover-color": "#eee",
+        },
+        "nav-link-selected": {"background-color": "#ff4b4b"},
+    }
+)
+
 
 # Barre latérale de navigation
 menu = st.sidebar.selectbox("Menu", ["Accueil", "Mon Profil"])
