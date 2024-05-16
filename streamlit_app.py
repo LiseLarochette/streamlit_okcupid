@@ -37,7 +37,7 @@ st.markdown("<h2 style='text-align: center; color: #ff4b4b;'>Bienvenue sur Wild 
 
 
 # Formulaire pour les informations de l'utilisateur
-    with st.form(key='user_info'):
+with st.form(key='user_info'):
         name = st.text_input("Nom")
         age = st.number_input(" ge", min_value=18, max_value=100, step=1)
         gender = st.selectbox("Sexe", ["Homme", "Femme", "Autre"])
