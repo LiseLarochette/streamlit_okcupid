@@ -1,21 +1,95 @@
 import streamlit as st
+import pandas as pd
+from datetime import datetime
 import random
+import numpy as np
 
+
+# Centrer le titre sur la page
+st.markdown("<h1 style='text-align: center; color: #ff4b4b;'>Wild Love</h1>", unsafe_allow_html=True)
+
+
+st.markdown("<h2 style='text-align: center; color: #ff4b4b;'>💖For one love 💖</h2>", unsafe_allow_html=True)
+
+# Liste des utilisateurs fictifs
+users = [
+    {"name": "Alice", "age": 25, "interests": "Voyages, Musique", "image": "alice.png"},
+    {"name": "Bob", "age": 30, "interests": "Sport, Lecture", "image": "bob.png"},
+    {"name": "Charlie", "age": 28, "interests": "Cuisine, Cinéma", "image": "charlie.png"},
+    {"name": "Diana", "age": 22, "interests": "Art, Danse", "image": "diana.png"},
+    {"name": "Eve", "age": 27, "interests": "Technologie, Randonnée", "image": "eve.png"},
+    {"name": "Frank", "age": 32, "interests": "Photographie, Yoga", "image": "frank.png"},
+    {"name": "Grace", "age": 29, "interests": "Mode, Lecture", "image": "grace.png"},
+    {"name": "Hannah", "age": 24, "interests": "Musique, Peinture", "image": "hannah.png"},
+    {"name": "Ivy", "age": 26, "interests": "Écriture, Voyage", "image": "ivy.png"},
+    {"name": "Jack", "age": 31, "interests": "Fitness, Jeux vidéo", "image": "jack.png"}
+]
 
 # Fonction pour afficher le titre centré
-# Header global
-st.markdown("<h1 style='text-align: center; color: #ff4b4b;'>Wild love</h1>", unsafe_allow_html=True)
-
 def centered_title(text):
-    st.markdown(f"<h2 style='text-align: center; color: #ff4b4b;'>For one love</h2>", unsafe_allow_html=True)
+    st.markdown(f"<h1 style='text-align: center; color: #ff4b4b;'>{text}</h1>", unsafe_allow_html=True)
 
 # Barre latérale de navigation
 menu = st.sidebar.selectbox("Menu", ["Accueil", "Mon Profil"])
 
+# Header global
+st.markdown("<h2 style='text-align: center; color: #ff4b4b;'>Bienvenue sur Wild Love</h2>", unsafe_allow_html=True)
 
+# Fonction pour afficher le pop-up de bienvenue
+def show_welcome_popup():
+    st.markdown("""
+        <div class="popup">
+            <div class="popup-content">
+                <span class="close">&times;</span>
+                <h2>Bienvenue sur Wild Love !</h2>
+                <p>Nous espérons que vous trouverez votre match parfait.</p>
+            </div>
+        </div>
+        <style>
+            .popup {
+                position: fixed;
+                top: 50%;
+                left: 50%;
+                transform: translate(-50%, -50%);
+                background-color: white;
+                padding: 20px;
+                box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
+                z-index: 1000;
+                border-radius: 10px;
+                text-align: center;
+                width: 300px;
+            }
+            .popup-content {
+                position: relative;
+            }
+            .close {
+                position: absolute;
+                top: 10px;
+                right: 10px;
+                font-size: 20px;
+                cursor: pointer;
+            }
+            .popup h2 {
+                color: #ff4b4b;
+            }
+        </style>
+        <script>
+            const closePopup = () => {
+                document.querySelector('.popup').style.display = 'none';
+            };
+            document.querySelector('.close').onclick = closePopup;
+            window.onclick = function(event) {
+                if (event.target == document.querySelector('.popup')) {
+                    document.querySelector('.popup').style.display = 'none';
+                }
+            }
+        </script>
+    """, unsafe_allow_html=True)
+
+# Appel de la fonction pour afficher le pop-up de bienvenue
+show_welcome_popup()
 # Page d'accueil
 if menu == "Accueil":
-    centered_title("Wild Love")
     st.markdown("""
     Bienvenue sur notre application de rencontre ! Renseignez vos informations ci-dessous et cliquez sur le bouton pour découvrir votre match parfait.
     """)
@@ -23,7 +97,7 @@ if menu == "Accueil":
     # Formulaire pour les informations de l'utilisateur
     with st.form(key='user_info'):
         name = st.text_input("Nom")
-        age = st.number_input("Âge", min_value=18, max_value=100, step=1)
+        age = st.number_input(" ge", min_value=18, max_value=100, step=1)
         gender = st.selectbox("Sexe", ["Homme", "Femme", "Autre"])
         height = st.number_input("Taille (cm)", min_value=100, max_value=250, step=1)
         interests = st.text_area("Intérêts")
@@ -32,7 +106,7 @@ if menu == "Accueil":
 
     if submit_button:
         st.write(f"**Nom:** {name}")
-        st.write(f"**Âge:** {age} ans")
+        st.write(f"** ge:** {age} ans")
         st.write(f"**Sexe:** {gender}")
         st.write(f"**Taille:** {height} cm")
         st.write(f"**Intérêts:** {interests}")
@@ -46,7 +120,7 @@ if menu == "Accueil":
             st.write(f"Intérêts : {match['interests']}")
 
     # Affichage des profils
-    st.header("Votre wild match !")
+    st.header("Nos utilisateurs")
 
     cols = st.columns(2)
     for i, user in enumerate(users):
@@ -63,7 +137,7 @@ elif menu == "Mon Profil":
     # Afficher les informations du profil si elles existent
     if 'name' in locals():
         st.write(f"**Nom:** {name}")
-        st.write(f"**Âge:** {age} ans")
+        st.write(f"** ge:** {age} ans")
         st.write(f"**Sexe:** {gender}")
         st.write(f"**Taille:** {height} cm")
         st.write(f"**Intérêts:** {interests}")
@@ -85,59 +159,5 @@ st.markdown("""
     </style>
 """, unsafe_allow_html=True)
 
-import streamlit as st
-import pandas as pd
-from sklearn.neighbors import NearestNeighbors
 
-# Charger le jeu de données encodé
-final_df_cupid_ml = pd.read_csv('final_df_cupid_ml.csv')
-# Sélectionner les caractéristiques pour le KNN
-features = final_df_cupid_ml.drop(['Name'], axis=1)
-
-# Interface utilisateur avec Streamlit
-st.title('Application de Matchmaking')
-
-# Formulaire pour les informations de l'utilisateur
-name = st.text_input("Nom")
-age = st.slider("Âge", 18, 100, 30)
-gender = st.selectbox("Sexe", ["Homme", "Femme", "Autre"])
-height = st.slider("Taille (cm)", 100, 250, 180)
-interests = st.text_area("Intérêts")
-submit_button = st.button("Trouver un match")
-
-if submit_button:
-    st.write(f"**Nom:** {name}")
-    st.write(f"**Âge:** {age} ans")
-    st.write(f"**Sexe:** {gender}")
-    st.write(f"**Taille:** {height} cm")
-    st.write(f"**Intérêts:** {interests}")
-    
-    # Prétraitement des données d'entrée utilisateur pour le KNN
-    user_input = {
-        'age': age,
-        'status_single': 1,
-        'sex_x_m': 1 if gender == "Homme" else 0,
-        'orientation_straight': 1,
-        'body_type_fit': 1,
-        'diet_anything': 1,
-        'education_bachelors': 1,
-        'height': height,
-        'job_computer / hardware / software': 1,
-        'pets_likes pets': 1,
-        'smokes_no': 1
-    }
-    user_input_encoded = pd.DataFrame(user_input, index=[0])
-    user_input_aligned = user_input_encoded.reindex(columns=features.columns, fill_value=0)
-    
-    # Initialisation et ajustement du modèle KNN
-    knn_model = NearestNeighbors(n_neighbors=1)
-    knn_model.fit(features)
-    
-    # Recherche du plus proche voisin
-    distances, indices = knn_model.kneighbors(user_input_aligned)
-    nearest_neighbor_index = indices[0][0]
-    nearest_neighbor_info = final_df_cupid_ml.iloc[nearest_neighbor_index]
-    
-    # Affichage des informations sur le match le plus proche
-    st.write("Match le plus proche:", nearest_neighbor_info)
 
