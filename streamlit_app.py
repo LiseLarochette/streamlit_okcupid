@@ -35,66 +35,8 @@ menu = st.sidebar.selectbox("Menu", ["Accueil", "Mon Profil"])
 # Header global
 st.markdown("<h2 style='text-align: center; color: #ff4b4b;'>Bienvenue sur Wild Love</h2>", unsafe_allow_html=True)
 
-# Fonction pour afficher le pop-up de bienvenue
-def show_welcome_popup():
-    st.markdown("""
-        <div class="popup">
-            <div class="popup-content">
-                <span class="close">&times;</span>
-                <h2>Bienvenue sur Wild Love !</h2>
-                <p>Nous espérons que vous trouverez votre match parfait.</p>
-            </div>
-        </div>
-        <style>
-            .popup {
-                position: fixed;
-                top: 50%;
-                left: 50%;
-                transform: translate(-50%, -50%);
-                background-color: white;
-                padding: 20px;
-                box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
-                z-index: 1000;
-                border-radius: 10px;
-                text-align: center;
-                width: 300px;
-            }
-            .popup-content {
-                position: relative;
-            }
-            .close {
-                position: absolute;
-                top: 10px;
-                right: 10px;
-                font-size: 20px;
-                cursor: pointer;
-            }
-            .popup h2 {
-                color: #ff4b4b;
-            }
-        </style>
-        <script>
-            const closePopup = () => {
-                document.querySelector('.popup').style.display = 'none';
-            };
-            document.querySelector('.close').onclick = closePopup;
-            window.onclick = function(event) {
-                if (event.target == document.querySelector('.popup')) {
-                    document.querySelector('.popup').style.display = 'none';
-                }
-            }
-        </script>
-    """, unsafe_allow_html=True)
 
-# Appel de la fonction pour afficher le pop-up de bienvenue
-show_welcome_popup()
-# Page d'accueil
-if menu == "Accueil":
-    st.markdown("""
-    Bienvenue sur notre application de rencontre ! Renseignez vos informations ci-dessous et cliquez sur le bouton pour découvrir votre match parfait.
-    """)
-
-    # Formulaire pour les informations de l'utilisateur
+# Formulaire pour les informations de l'utilisateur
     with st.form(key='user_info'):
         name = st.text_input("Nom")
         age = st.number_input(" ge", min_value=18, max_value=100, step=1)
