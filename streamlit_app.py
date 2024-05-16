@@ -189,4 +189,4 @@ elif menu == "Mon Profil":
         st.write(f"**Niveau d'éducation:** {education}")
         st.write(f"**Métier:** {job}")
         st.write(f"**Animaux:** {pets}")
-        st.write(f"**Fumeur
+        st.write(f"**Fumeur:** {smokes}")
