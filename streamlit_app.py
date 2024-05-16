@@ -35,6 +35,9 @@ menu = st.sidebar.selectbox("Menu", ["Accueil", "Mon Profil"])
 # Header global
 st.markdown("<h2 style='text-align: center; color: #ff4b4b;'>Bienvenue sur Wild Love</h2>", unsafe_allow_html=True)
 
+# Afficher un message de bienvenue
+st.toast("Bienvenue sur Wild Love ! Nous espérons que vous trouverez votre match parfait.", icon="👋")
+
 # Page d'accueil
 if menu == "Accueil":
     st.markdown("""
