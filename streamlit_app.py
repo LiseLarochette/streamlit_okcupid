@@ -12,9 +12,7 @@ st.markdown("<h1 style='text-align: center; color: #ff4b4b;'>Wild Love</h1>", un
 st.markdown("<h2 style='text-align: center; color: #ff4b4b;'>💖For one love 💖</h2>", unsafe_allow_html=True)
 
 import streamlit as st
-import random
-
-import streamlit as st
+from streamlit_option_menu import option_menu
 import random
 
 # Liste des utilisateurs fictifs
@@ -57,14 +55,9 @@ selected = option_menu(
     }
 )
 
-
-# Barre latérale de navigation
-menu = st.sidebar.selectbox("Menu", ["Accueil", "Mon Profil"])
-# Header global
-st.markdown("<h2 style='text-align: center; color: #ff4b4b;'>Bienvenue sur Wild Love</h2>", unsafe_allow_html=True)
-
 # Page d'accueil
-if menu == "Accueil":
+if selected == "Accueil":
+    centered_title("Wild Love")
     st.markdown("""
     Bienvenue sur notre application de rencontre ! Renseignez vos informations ci-dessous et cliquez sur le bouton pour découvrir votre match parfait.
     """)
@@ -95,7 +88,7 @@ if menu == "Accueil":
             st.write(f"Intérêts : {match['interests']}")
 
     # Affichage des profils
-    st.header("Mon match idéal")
+    st.header("Nos utilisateurs")
 
     cols = st.columns(2)
     for i, user in enumerate(users):
@@ -106,7 +99,7 @@ if menu == "Accueil":
             st.write(f"Intérêts : {user['interests']}")
 
 # Page de profil utilisateur
-elif menu == "Mon Profil":
+elif selected == "Mon Profil":
     centered_title("Mon Profil")
 
     # Afficher les informations du profil si elles existent
