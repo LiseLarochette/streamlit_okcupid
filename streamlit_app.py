@@ -2,7 +2,6 @@ import streamlit as st
 import pandas as pd
 import random
 from sklearn.neighbors import NearestNeighbors
-from streamlit_option_menu import option_menu
 
 # Liste des utilisateurs fictifs
 users = [
@@ -27,28 +26,6 @@ features = final_df_cupid_ml.drop(['Name'], axis=1)  # Supprimer la colonne 'Nam
 # Centrer le titre sur la page
 st.markdown("<h1 style='text-align: center; color: #ff4b4b;'>Wild Love</h1>", unsafe_allow_html=True)
 st.markdown("<h2 style='text-align: center; color: #ff4b4b;'>💖For one love 💖</h2>", unsafe_allow_html=True)
-
-# Menu de navigation en haut
-menu = option_menu(
-    menu_title=None,  # Pas de titre pour le menu
-    options=["Accueil", "Mon Profil"],  # Options du menu
-    icons=["house", "person"],  # Icônes pour les options
-    menu_icon="cast",  # Icône du menu
-    default_index=0,  # Option par défaut
-    orientation="horizontal",  # Menu horizontal
-    styles={
-        "container": {"padding": "0!important", "background-color": "#fafafa"},
-        "icon": {"color": "orange", "font-size": "25px"},
-        "nav-link": {
-            "font-size": "16px",
-            "text-align": "center",
-            "margin": "0px",
-            "padding": "10px",
-            "--hover-color": "#eee",
-        },
-        "nav-link-selected": {"background-color": "#ff4b4b"},
-    }
-)
 
 # Fonction pour afficher le pop-up de bienvenue
 def show_welcome_popup():
