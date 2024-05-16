@@ -40,7 +40,7 @@ with st.form(key='user_info'):
     height = st.number_input("Taille (cm)", min_value=100, max_value=250, step=1)
     interests = st.text_area("Intérêts")
     
-    submit_button = st.form_submit_button(label="Soumettre")
+    submit_button = st.form_submit_button(label="Découvrir mon match parfait")
 
 if submit_button:
     st.write(f"**Nom:** {name}")
