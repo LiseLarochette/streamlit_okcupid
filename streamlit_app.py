@@ -10,7 +10,6 @@ st.markdown("<h1 style='text-align: center; color: #ff4b4b;'>Wild Love</h1>", un
 
 st.markdown("<h2 style='text-align: center; color: #ff4b4b;'>💖For one love 💖</h2>", unsafe_allow_html=True)
 
-
 import streamlit as st
 import random
 
