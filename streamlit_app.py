@@ -36,6 +36,8 @@ def centered_title(text):
 
 # Barre latérale de navigation
 menu = st.sidebar.selectbox("Menu", ["Accueil", "Mon Profil"])
+# Header global
+st.markdown("<h2 style='text-align: center; color: #ff4b4b;'>Bienvenue sur Wild Love</h2>", unsafe_allow_html=True)
 
 # Page d'accueil
 if menu == "Accueil":
@@ -69,7 +71,7 @@ if menu == "Accueil":
             st.write(f"Intérêts : {match['interests']}")
 
     # Affichage des profils
-    st.header("Nos utilisateurs")
+    st.header("Mon match idéal")
 
     cols = st.columns(2)
     for i, user in enumerate(users):
