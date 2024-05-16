@@ -42,11 +42,6 @@ pen.hideturtle()
 window.mainloop()
 
 
-# Create a button
-if st.button('Show Picture'):
-    # Display an image when the button is clicked
-    st.image('image.jpg', caption='A beautiful picture')
 
-# You can replace 'image.jpg' with the path to your own image file
 
 
