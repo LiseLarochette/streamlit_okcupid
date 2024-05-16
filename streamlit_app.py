@@ -1,6 +1,5 @@
 import streamlit as st
 import random
-from streamlit_option_menu import option_menu
 
 # Centrer le titre sur la page
 st.markdown("<h1 style='text-align: center; color: #ff4b4b;'>Wild Love</h1>", unsafe_allow_html=True)
