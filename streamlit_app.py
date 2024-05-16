@@ -6,19 +6,6 @@ import random
 st.markdown("<h1 style='text-align: center; color: #ff4b4b;'>Wild Love</h1>", unsafe_allow_html=True)
 st.markdown("<h2 style='text-align: center; color: #ff4b4b;'>💖For one love 💖</h2>", unsafe_allow_html=True)
 
-# Liste des utilisateurs fictifs
-users = [
-    {"name": "Alice", "age": 25, "interests": "Voyages, Musique", "image": "alice.png"},
-    {"name": "Bob", "age": 30, "interests": "Sport, Lecture", "image": "bob.png"},
-    {"name": "Charlie", "age": 28, "interests": "Cuisine, Cinéma", "image": "charlie.png"},
-    {"name": "Diana", "age": 22, "interests": "Art, Danse", "image": "diana.png"},
-    {"name": "Eve", "age": 27, "interests": "Technologie, Randonnée", "image": "eve.png"},
-    {"name": "Frank", "age": 32, "interests": "Photographie, Yoga", "image": "frank.png"},
-    {"name": "Grace", "age": 29, "interests": "Mode, Lecture", "image": "grace.png"},
-    {"name": "Hannah", "age": 24, "interests": "Musique, Peinture", "image": "hannah.png"},
-    {"name": "Ivy", "age": 26, "interests": "Écriture, Voyage", "image": "ivy.png"},
-    {"name": "Jack", "age": 31, "interests": "Fitness, Jeux vidéo", "image": "jack.png"}
-]
 
 # Fonction pour afficher le titre centré
 def centered_title(text):
@@ -41,7 +28,7 @@ if menu == "Accueil":
         height = st.number_input("Taille (cm)", min_value=100, max_value=250, step=1)
         interests = st.text_area("Intérêts")
         
-        submit_button = st.form_submit_button(label="Soumettre")
+        submit_button = st.form_submit_button(label="Découvrir mon match")
 
     if submit_button:
         st.write(f"**Nom:** {name}")
