@@ -25,8 +25,6 @@ def centered_title(text):
 # Barre latérale de navigation
 menu = st.sidebar.selectbox("Menu", ["Accueil", "Mon Profil"])
 
-# Header global
-st.markdown("<h3 style='text-align: center; color: #ff4b4b;'>Bienvenue sur Wild Love</h3>", unsafe_allow_html=True)
 
 # Page d'accueil
 if menu == "Accueil":
