@@ -58,7 +58,7 @@ if submit_button:
         st.write(f"Intérêts : {match['interests']}")
 
 # Affichage des profils
-st.header("Nos utilisateurs")
+st.header("Mon match idéal")
 
 cols = st.columns(2)
 for i, user in enumerate(users):
