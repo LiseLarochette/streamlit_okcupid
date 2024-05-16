@@ -1,9 +1,6 @@
 import streamlit as st
+from streamlit_option_menu import option_menu
 import random
-
-# Centrer le titre sur la page
-st.markdown("<h1 style='text-align: center; color: #ff4b4b;'>Wild Love</h1>", unsafe_allow_html=True)
-st.markdown("<h2 style='text-align: center; color: #ff4b4b;'>💖For one love 💖</h2>", unsafe_allow_html=True)
 
 # Liste des utilisateurs fictifs
 users = [
@@ -23,63 +20,37 @@ users = [
 def centered_title(text):
     st.markdown(f"<h1 style='text-align: center; color: #ff4b4b;'>{text}</h1>", unsafe_allow_html=True)
 
+# Menu de navigation en haut
+selected = option_menu(
+    menu_title=None,  # Pas de titre pour le menu
+    options=["Accueil", "Mon Profil"],  # Options du menu
+    icons=["house", "person"],  # Icônes pour les options
+    menu_icon="cast",  # Icône du menu
+    default_index=0,  # Option par défaut
+    orientation="horizontal",  # Menu horizontal
+    styles={
+        "container": {"padding": "0!important", "background-color": "#fafafa"},
+        "icon": {"color": "orange", "font-size": "25px"},
+        "nav-link": {
+            "font-size": "16px",
+            "text-align": "center",
+            "margin": "0px",
+            "padding": "10px",
+            "--hover-color": "#eee",
+        },
+        "nav-link-selected": {"background-color": "#ff4b4b"},
+    }
+)
 
-# Fonction pour afficher le pop-up de bienvenue
-def show_welcome_popup():
-    st.markdown("""
-        <div class="popup">
-            <div class="popup-content">
-                <span class="close">&times;</span>
-                <h2>Bienvenue sur Wild Love !</h2>
-                <p>Nous espérons que vous trouverez votre match parfait.</p>
-            </div>
-        </div>
-        <style>
-            .popup {
-                position: fixed;
-                top: 50%;
-                left: 50%;
-                transform: translate(-50%, -50%);
-                background-color: white;
-                padding: 20px;
-                box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
-                z-index: 1000;
-                border-radius: 10px;
-                text-align: center;
-                width: 300px;
-            }
-            .popup-content {
-                position: relative;
-            }
-            .close {
-                position: absolute;
-                top: 10px;
-                right: 10px;
-                font-size: 20px;
-                cursor: pointer;
-            }
-            .popup h2 {
-                color: #ff4b4b;
-            }
-        </style>
-        <script>
-            const closePopup = () => {
-                document.querySelector('.popup').style.display = 'none';
-            };
-            document.querySelector('.close').onclick = closePopup;
-            window.onclick = function(event) {
-                if (event.target == document.querySelector('.popup')) {
-                    document.querySelector('.popup').style.display = 'none';
-                }
-            }
-        </script>
-    """, unsafe_allow_html=True)
+# Afficher un message de bienvenue
+st.toast("Bienvenue sur Wild Love ! Nous espérons que vous trouverez votre match parfait.", icon="👋")
 
-# Appel de la fonction pour afficher le pop-up de bienvenue
-show_welcome_popup()
+# Header global
+st.markdown("<h2 style='text-align: center; color: #ff4b4b;'>Bienvenue sur Wild Love</h2>", unsafe_allow_html=True)
 
 # Page d'accueil
-if menu == "Accueil":
+if selected == "Accueil":
+    centered_title("Wild Love")
     st.markdown("""
     Bienvenue sur notre application de rencontre ! Renseignez vos informations ci-dessous et cliquez sur le bouton pour découvrir votre match parfait.
     """)
@@ -121,7 +92,7 @@ if menu == "Accueil":
             st.write(f"Intérêts : {user['interests']}")
 
 # Page de profil utilisateur
-elif menu == "Mon Profil":
+elif selected == "Mon Profil":
     centered_title("Mon Profil")
 
     # Afficher les informations du profil si elles existent
