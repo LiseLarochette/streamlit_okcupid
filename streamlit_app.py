@@ -37,7 +37,6 @@ st.markdown("<h2 style='text-align: center; color: #ff4b4b;'>Bienvenue sur Wild 
 
 # Page d'accueil
 if menu == "Accueil":
-    centered_title("Wild Love")
     st.markdown("""
     Bienvenue sur notre application de rencontre ! Renseignez vos informations ci-dessous et cliquez sur le bouton pour découvrir votre match parfait.
     """)
