@@ -17,7 +17,7 @@ users = [
 
 # Fonction pour afficher le titre centré
 def centered_title(text):
-    st.markdown(f"<h1 style='text-align: center; color: #ff4b4b;'>{text}</h1>", unsafe_allow_html=True)
+    st.markdown(f"<h1 style='text-align: center; color: #ff4b4b;'>Wild love</h1>", unsafe_allow_html=True)
 
 def centered_title(text):
     st.markdown(f"<h2 style='text-align: center; color: #ff4b4b;'>For one love</h2>", unsafe_allow_html=True)
