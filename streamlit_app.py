@@ -11,6 +11,9 @@ st.title('Wild Love')
 st.write("One love")
 
 
+import streamlit as st
+import random
+
 # Liste des utilisateurs fictifs
 users = [
     {"name": "Alice", "age": 25, "interests": "Voyages, Musique", "image": "alice.png"},
@@ -73,4 +76,14 @@ for i, user in enumerate(users):
 st.markdown("""
     <style>
         .stButton button {
-            background-co
+            background-color: #ff4b4b;
+            color: white;
+            border-radius: 12px;
+            padding: 10px 20px;
+        }
+        .stSuccess {
+            font-size: 1.2em;
+        }
+    </style>
+""", unsafe_allow_html=True)
+
