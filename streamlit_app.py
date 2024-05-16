@@ -2,7 +2,41 @@ import streamlit as st
 import pandas as pd
 from datetime import datetime
 
-st.title('Wild Love')
+st.title('Wild Love') 
+import streamlit as st
+import numpy as np
+
+# Create a canvas to draw the heart shape
+canvas = st.empty()
+canvas_width = 200
+canvas_height = 200
+
+# Draw the heart shape using a set of points
+with canvas:
+    ctx = canvas.drawable_canvas(
+        width=canvas_width,
+        height=canvas_height,
+        drawing_mode="freedraw",
+        key="canvas",
+    )
+
+    # Draw the heart shape using lines
+    ctx.line_width = 2
+    ctx.line_join = "round"
+
+    ctx.begin_path()
+    ctx.move_to(100, 80)
+    ctx.quadratic_curve_to(30, 30, 60, 10)
+    ctx.quadratic_curve_to(90, 30, 100, 80)
+    ctx.stroke()
+
+    ctx.begin_path()
+    ctx.move_to(100, 80)
+    ctx.quadratic_curve_to(170, 30, 140, 10)
+    ctx.quadratic_curve_to(110, 30, 100, 80)
+    ctx.stroke()
+    
+
 
 st.write("Découvre ton match idéal")
 
