@@ -30,9 +30,7 @@ users = [
     {"name": "Jack", "age": 31, "interests": "Fitness, Jeux vidéo", "image": "jack.png"}
 ]
 
-# Fonction pour afficher le titre centré
-def centered_title(text):
-    st.markdown(f"<h1 style='text-align: center; color: #ff4b4b;'>{text}</h1>", unsafe_allow_html=True)
+
 
 # Barre latérale de navigation
 menu = st.sidebar.selectbox("Menu", ["Accueil", "Mon Profil"])
