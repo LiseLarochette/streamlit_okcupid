@@ -10,6 +10,6 @@ link = "https://raw.githubusercontent.com/murpi/wilddata/master/quests/cars.csv"
 df_weather = pd.read_csv(link)
 
 # Create a button
-if st.button('C'est parti !'):
-    st.write('C'est parti !')
+if st.button('Click me'):
+    st.write('Button clicked!')
 
